@@ -1,0 +1,43 @@
+{
+    "name": "template_ml_with_gpu:latest",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "template-ml-with-gpu",
+    "workspaceFolder": "/home/$HOME/",
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "KevinRose.vsc-python-indent",
+                "charliermarsh.ruff",
+                "njpwerner.autodocstring",
+                "oderwat.indent-rainbow",
+                "PKief.material-icon-theme"
+            ],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "fish",
+                "editor.formatOnSave": true,
+                "files.insertFinalNewline": true,
+                "editor.formatOnPaste": false,
+                "editor.formatOnType": false,
+                "editor.formatOnSaveMode": "file",
+                "editor.codeActionsOnSave": {
+                    "source.fixAll": "explicit",
+                    "source.organizeImports": "explicit"
+                },
+
+                "[python]": {
+                    "notebook.formatOnSave.enabled": true,
+                    "editor.formatOnSave": true,
+                    "editor.formatOnPaste": false,
+                    "editor.formatOnType": false,
+                    "editor.defaultFormatter": "charliermarsh.ruff",
+                    "editor.codeActionsOnSave": {
+                        "source.fixAll": "explicit",
+                        "source.organizeImports": "explicit"
+                    }
+                }
+            }
+        }
+    }
+}

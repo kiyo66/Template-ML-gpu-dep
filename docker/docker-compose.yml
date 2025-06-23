@@ -1,0 +1,39 @@
+services:
+  template-ml-with-gpu:
+    image: template_ml_with_gpu:latest
+    container_name: template_ml_with_gpu
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile
+      args:
+        USER_NAME: ${USER_NAME}
+        GROUP_NAME: ${GROUP_NAME}
+        NUM_UID: ${NUM_UID}
+        NUM_GID: ${NUM_GID}
+    stdin_open: true
+    tty: true
+    volumes:
+      - type: bind
+        source: "../../src"
+        target: "/home/${USER_NAME}/workspace/src"
+      - type: bind
+        source: "../env/"
+        target: "/env/"
+      - type: bind
+        source: "/tmp/.X11-unix"
+        target: "/tmp/.X11-unix"
+      - type: bind
+        source: "~/.Xauthority"
+        target: "/home/${USER_NAME}/.Xauthority"
+        read_only: false
+    command: ["/usr/bin/fish"]
+    env_file:
+      - .env
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
