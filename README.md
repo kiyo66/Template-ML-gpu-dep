@@ -20,4 +20,7 @@ Verification:
 ```bash
 nvidia-smi
 docker run --rm --gpus all nvidia/cuda:12.4.1-cudnn-devel-ubuntu22.04 nvidia-smi
+```
 
+## Quickstart with Makefile
+```make up```
